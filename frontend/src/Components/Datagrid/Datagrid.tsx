@@ -1,7 +1,7 @@
 import React from 'react'
 import { DatagridHeader } from './DatagridHeader'
 import { DatagridBody } from './DatagridBody'
-// import { DatagridPagination } from './DatagridPagination'
+import { DatagridPagination } from './DatagridPagination'
 
 type DatagridProps = {
   rows: {}[],
@@ -78,7 +78,7 @@ const Datagrid = ({ rows, columns, onDelete }:DatagridProps) => {
         <p>there are no records</p>
       )}
 
-      {/* <DatagridPagination
+      <DatagridPagination
         rowsCount={count}
         rowsPerPage={rowsPerPage}
         onPageChange={handlePageChange}
@@ -88,7 +88,7 @@ const Datagrid = ({ rows, columns, onDelete }:DatagridProps) => {
         onNextButton={handleNextButton}
         onPreviousButton={handlePreviousButton}
         onMovePageTo={handleMovePageTo}
-      /> */}
+      />
     </div>
   )
 }

@@ -1,5 +1,3 @@
-
-
 type DatagridCellProps = {
   selectedCell:{
     rowId: number|null,
