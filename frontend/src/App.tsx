@@ -21,6 +21,7 @@ function App() {
 
   const [columns, setColumns] = React.useState<any[]>([])
   const [rows, setRows] = React.useState<any[]>([])
+  const [rowsPerPage, setRowsPerPage] = React.useState<number>(100)
   const [status, setStatus] = React.useState<string>('idle')
   const [error, setError] = React.useState<string>('')
 
@@ -39,7 +40,7 @@ function App() {
   return (
     <div className={'container'}>
       { isSuccess?(
-        <Datagrid rows={rows} columns={columns} onDelete={handleDelete} />
+        <Datagrid rows={rows} columns={columns} rowsPerPage={rowsPerPage} onDelete={handleDelete} />
       ):isLoading || isIdle?(
         <div>Loading</div>
       ): isError ? (

@@ -4,13 +4,13 @@ type DatagridCellProps = {
     columnId: number|null,
   },
   column:any,
-  row:any
-  edit: boolean
-  onSelectCell: (rowId:number, columnId:number) => void
-  onEditCell: () => void
+  row:any,
+  edit: boolean,
+  onSelectCell: (rowId:number, columnId:number) => void,
+  onTogleEditCell: () => void
 }
 
-export const DatagridCell = ({row, column,selectedCell,onSelectCell, edit, onEditCell}:DatagridCellProps ) => {
+export const DatagridCell = ({row, column,selectedCell,onSelectCell, edit, onTogleEditCell}:DatagridCellProps ) => {
 
 
   // get the cell data
@@ -25,13 +25,13 @@ export const DatagridCell = ({row, column,selectedCell,onSelectCell, edit, onEdi
     <td
       className="datagrid__cell"
       style={{ border: isSelectedCell ? '2px solid #66afe9' : '' }}
-      onClick={() => onSelectCell(row.id, column.id)}
-      onDoubleClick={onEditCell}
+      
+      onDoubleClick={onTogleEditCell}
     >
       {isSelectedCell && isEdit ? (
-        <input className="input" type="text" value={cellData} />
+        <input className="datagrid__cell-input" type="text" value={cellData} autoFocus />
       ) : (
-        <div>{cellData}</div> 
+        <div className="datagrid__cell-text"  onClick={() => onSelectCell(row.id, column.id)}>{cellData}</div> 
       )}
     </td>
   )

@@ -5,18 +5,18 @@ import { DatagridPagination } from './DatagridPagination'
 
 type DatagridProps = {
   rows: {}[],
-  columns:{}[]
+  columns:{}[],
+  rowsPerPage:number,
   onDelete: (rowId:number)=>void
 }
 
 
-const Datagrid = ({ rows, columns, onDelete }:DatagridProps) => {
+const Datagrid = ({ rows, columns,rowsPerPage, onDelete }:DatagridProps) => {
 
   const [currentPage, setCurrentPage] = React.useState<number>(1)
-  const [rowsPerPage, setRowsPerPage] = React.useState<number>(100)
-  const [pageNumberLimit, setpageNumberLimit] = React.useState<number>(10)
-  const [maxPageNumberLimit, setmaxPageNumberLimit] = React.useState(10)
-  const [minPageNumberLimit, setminPageNumberLimit] = React.useState(0)
+  const pageNumberLimit:number = 20
+  const [maxPageNumberLimit, setmaxPageNumberLimit] = React.useState<number>(pageNumberLimit)
+  const [minPageNumberLimit, setminPageNumberLimit] = React.useState<number>(0)
 
   const count = rows.length
 

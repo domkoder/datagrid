@@ -19,18 +19,14 @@ export const DatagridBody = ({ rows, columns, onDelete }:DatagridBodyProps) => {
 
   const handleSelectCell = (rowId:number, columnId:number):void => {
     setSelectedCell({
-      // ...selectedCell,
       rowId,
       columnId,
     })
+    setEdit(false)
   }
 
-  const handleEditCell = () => {
-    console.log('clicke twis')
-    setSelectedCell({
-      ...selectedCell,
-      // status: 'edit',
-    })
+  const handleToggleEditCell = () => {
+    setEdit(true)
   }
 
   return (
@@ -44,7 +40,7 @@ export const DatagridBody = ({ rows, columns, onDelete }:DatagridBodyProps) => {
           edit={edit}
           onDelete={onDelete}
           onSelectCell={handleSelectCell}
-          onEditCell={handleEditCell}
+          onTogleEditCell={handleToggleEditCell}
         />
       ))}
     </tbody>

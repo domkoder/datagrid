@@ -10,7 +10,7 @@ type DatagridCellProps = {
   edit: boolean,
   onDelete: (rowId:number)=>void,
   onSelectCell: (rowId:number, columnId:number) => void
-  onEditCell: () => void
+  onTogleEditCell: () => void
 }
 
 export const DatagridRow = ({
@@ -20,7 +20,7 @@ export const DatagridRow = ({
   edit,
   onDelete,
   onSelectCell,
-  onEditCell,
+  onTogleEditCell,
 }:DatagridCellProps) => {
   return (
     <tr className="datagrid__row">
@@ -32,12 +32,14 @@ export const DatagridRow = ({
           selectedCell={selectedCell}
           edit={edit}
           onSelectCell={onSelectCell}
-          onEditCell={onEditCell}
+          onTogleEditCell={onTogleEditCell}
           
         />
       ))}
       <td className="datagrid__cell" onClick={() => onDelete(row.id)}>
-        <button>Delete</button>
+        <div className="datagrid__cell-text">
+          <button>Delete</button>
+        </div>
       </td>
     </tr>
   )
