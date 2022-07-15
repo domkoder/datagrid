@@ -48,17 +48,6 @@ export type DatagridCellProps = {
   onEditCell: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
-// export type DatagridCellProps = {
-//   row:any,
-//   column:Column,
-//   selectedCell:SelectedCell,
-//   edit: boolean,
-//   onDelete: (rowId:number)=>void,
-//   onSelectCell: (rowId:number, columnId:number) => void
-//   onTogleEditCell: () => void
-//   onEditCell: (event: React.ChangeEvent<HTMLInputElement>) => void
-// }
-
 export type DatagridPaginationProps = {
   rowsCount:number,
   rowsPerPage: number,

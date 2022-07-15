@@ -118,7 +118,7 @@ const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:Datagrid
   }
 
   return (
-    <div className='wrapper'>
+    <div>
       {count !== 0 ? (
         <>
 
@@ -136,17 +136,17 @@ const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:Datagrid
             onPreviousButton={handlePreviousButton}
             onMovePageTo={handleMovePageTo}
           />
-
-          <table className="datagrid">
-            <DatagridHeader columns={columns} sortColumn={sortColumn} onSort={handleSort} />
-            <DatagridBody
-              columns={columns}
-              rows={paginatedRows}
-              onDelete={handleDelete}
-              onEditCell={handeEditCell}
-            />
-          </table>
-
+          <div className='wrapper'>
+            <table className="datagrid">
+              <DatagridHeader columns={columns} sortColumn={sortColumn} onSort={handleSort} />
+              <DatagridBody
+                columns={columns}
+                rows={paginatedRows}
+                onDelete={handleDelete}
+                onEditCell={handeEditCell}
+              />
+            </table>
+          </div>
           <DatagridPagination
             rowsCount={count}
             rowsPerPage={rowsPerPage}

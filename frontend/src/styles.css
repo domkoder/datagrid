@@ -36,3 +36,9 @@
 	color: #4a5568;
 	overflow: hidden;
 }
+
+@media screen and (max-width: 992px) {
+	.container {
+		padding: 10px;
+	}
+}

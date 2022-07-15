@@ -41,7 +41,7 @@ function App() {
       {/* render base on the status state  */}
       { isSuccess?(
         <div  className={'container'}>
-          <Datagrid rows={dataRows} columns={dataColumns} rowsPerPage={100}  />
+          <Datagrid rows={dataRows} columns={dataColumns} rowsPerPage={1000}  />
         </div>
       ):isLoading || isIdle ?(
         <div className="spinner"><Spinner className='spinner__icon'/></div>
