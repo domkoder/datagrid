@@ -60,7 +60,7 @@ function getGeneratedData():Data  {
   const dataRows: DataRows [] = []
 
   // loop and push data to dataRows array
-  for (let i = 1; i <= 100000; i++) {
+  for (let i = 1; i <= 10000; i++) {
     dataRows.push({
       id: i,
       firstName: name.firstName(),
