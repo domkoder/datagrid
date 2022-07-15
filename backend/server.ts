@@ -1,7 +1,12 @@
+import dotenv from 'dotenv'
+dotenv.config()
 import express, { Request, Response } from "express"
+import path  from 'path'
 const app = express()
 import { faker } from '@faker-js/faker'
 import cors from "cors";
+
+const port = process.env.PORT || 5000
 
 const {name, address, company, internet, commerce} = faker
 
@@ -84,12 +89,23 @@ app.get("/api/data", (req: Request, res: Response) => {
   }
 })
 
+// app.get("/", (req: Request, res: Response): void => {
+//   res.json({ message: "up ready to roll" });
+// });
 
+// Serve frontend
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static(path.join(__dirname, '../frontend/build')))
 
-app.get("/", (req: Request, res: Response): void => {
-  res.json({ message: "Please Like the Video!" });
-});
+	app.get('*', (req, res) =>
+		res.sendFile(
+			path.resolve(__dirname, '../', 'frontend ', 'build', 'index.html')
+		)
+	)
+} else {
+  app.get('/', (req, res) => res.send('Please set to production'))
+}
 
-app.listen(3001, (): void => {
+app.listen(port, (): void => {
   console.log("Server Running!");
 });
