@@ -1,53 +1,53 @@
 import React from 'react';
 import './App.css'
 import { Datagrid } from './Components';
+import { ReactComponent as Spinner } from './spinner.svg';
+
+// Declear columns and rows variables
+let dataColumns: {}[] = []
+let dataRows: {}[] = []
+
 
 function App() {
-  // fetch data from backend
+  // fetch data from backend and asign the result columns and rows variables
   React.useEffect(() => {
     setStatus('loading')
     fetch('http://localhost:3001/api/data')
     .then(response => response.json())
     .then(result => {
-      setColumns(result.dataColumns)
-      setRows(result.dataRows)
+      dataColumns = result.dataColumns
+      dataRows = result.dataRows
       setStatus('success')
-      console.log('Success:', result);
     }).catch(error => {
-      console.error('Error:', error);
-      setError('error please check your network and try again')
+      setError('error please check your network and try again' + error)
     })
   }, [])
 
-  const [columns, setColumns] = React.useState<any[]>([])
-  const [rows, setRows] = React.useState<any[]>([])
-  const [rowsPerPage, setRowsPerPage] = React.useState<number>(100)
+  
   const [status, setStatus] = React.useState<string>('idle')
   const [error, setError] = React.useState<string>('')
 
-  // get booleans for status
+  // compute booleans values for status
   const isIdle:boolean = status === 'idle'
   const isLoading:boolean = status === 'loading'
   const isSuccess:boolean = status === 'success'
   const isError:boolean = status === 'error'
 
 
-  const handleDelete = (rowId:number): void => {
-    setRows(rows.filter(row => row.id !== rowId))
-  }
-
-
   return (
-    <div className={'container'}>
+    <>
+      {/* render base on the status state  */}
       { isSuccess?(
-        <Datagrid rows={rows} columns={columns} rowsPerPage={rowsPerPage} onDelete={handleDelete} />
-      ):isLoading || isIdle?(
-        <div>Loading</div>
+        <div  className={'container'}>
+          <Datagrid rows={dataRows} columns={dataColumns} rowsPerPage={100}  />
+        </div>
+      ):isLoading || isIdle ?(
+        <div className="spinner"><Spinner className='spinner__icon'/></div>
       ): isError ? (
         <div>{error}</div>
       ):null
       }
-    </div>
+    </>
   )
 }
 

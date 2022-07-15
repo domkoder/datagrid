@@ -6,25 +6,37 @@ import { DatagridPagination } from './DatagridPagination'
 type DatagridProps = {
   rows: {}[],
   columns:{}[],
-  rowsPerPage:number,
-  onDelete: (rowId:number)=>void
+  rowsPerPage?:number,
 }
 
 
-const Datagrid = ({ rows, columns,rowsPerPage, onDelete }:DatagridProps) => {
+const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:DatagridProps) => {
+  // Get columns and rows then set it as localstate
+  React.useEffect(() => {
+    setColumns(dataColumns)
+    setRows(dataRows)
+  }, [dataColumns, dataRows])
+  
+  
+  const [columns, setColumns] = React.useState<any[]>([])
+  const [rows, setRows] = React.useState<any[]>([])
 
+
+  // pagination states to manage page pagination
   const [currentPage, setCurrentPage] = React.useState<number>(1)
   const pageNumberLimit:number = 20
   const [maxPageNumberLimit, setmaxPageNumberLimit] = React.useState<number>(pageNumberLimit)
   const [minPageNumberLimit, setminPageNumberLimit] = React.useState<number>(0)
 
+
+  // the total count of rows
   const count = rows.length
 
-  // Get current rows
+
+  // Get paginated current rows
   const indexOfLastRow = currentPage * rowsPerPage
   const indexOfFirstRow = indexOfLastRow - rowsPerPage
-  const currentRows = rows.slice(indexOfFirstRow, indexOfLastRow)
-
+  const paginatedRows = rows.slice(indexOfFirstRow, indexOfLastRow)
 
 
   const handlePageChange  = (page:number):void => {
@@ -60,35 +72,54 @@ const Datagrid = ({ rows, columns,rowsPerPage, onDelete }:DatagridProps) => {
     }
   }
 
+  // delete rows
+  const handleDelete = (rowId:number): void => {
+    setRows(rows.filter(row => row.id !== rowId))
+  }
+
+  // edit cell data
+  const handeEditCell = (event:React.ChangeEvent<HTMLInputElement>): void => {
+    const {value, id, name} = event.target
+
+    setRows(rows.map((row) => {
+      if(row.id === Number(id)){
+        return {...row, [name]:value }
+      }else{
+        return row
+      } }))
+  }
+
   return (
-    <div>
+    <div className='wrapper'>
       {count !== 0 ? (
         <>
-          <p>Show {count} records </p>
+          <p>{count} total rows </p>
+          <p>Showing {rowsPerPage} rows per page </p>
           <table className="datagrid">
             <DatagridHeader columns={columns} />
             <DatagridBody
               columns={columns}
-              rows={currentRows}
-              onDelete={onDelete}
+              rows={paginatedRows}
+              onDelete={handleDelete}
+              onEditCell={handeEditCell}
             />
           </table>
+
+          <DatagridPagination
+            rowsCount={count}
+            rowsPerPage={rowsPerPage}
+            onPageChange={handlePageChange}
+            currentPage={currentPage}
+            maxPageNumberLimit={maxPageNumberLimit}
+            minPageNumberLimit={minPageNumberLimit}
+            onNextButton={handleNextButton}
+            onPreviousButton={handlePreviousButton}
+            onMovePageTo={handleMovePageTo}
+          />
         </>
       ) : (
         <p>there are no records</p>
       )}
-
-      <DatagridPagination
-        rowsCount={count}
-        rowsPerPage={rowsPerPage}
-        onPageChange={handlePageChange}
-        currentPage={currentPage}
-        maxPageNumberLimit={maxPageNumberLimit}
-        minPageNumberLimit={minPageNumberLimit}
-        onNextButton={handleNextButton}
-        onPreviousButton={handlePreviousButton}
-        onMovePageTo={handleMovePageTo}
-      />
     </div>
   )
 }
