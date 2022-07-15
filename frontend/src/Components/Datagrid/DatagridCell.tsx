@@ -1,15 +1,5 @@
-type DatagridCellProps = {
-  selectedCell:{
-    rowId: number|null,
-    columnId: number|null,
-  },
-  column:any,
-  row:any,
-  edit: boolean,
-  onSelectCell: (rowId:number, columnId:number) => void,
-  onTogleEditCell: () => void
-  onEditCell: (event: React.ChangeEvent<HTMLInputElement>) => void
-}
+import {DatagridCellProps} from './Datagrid.types'
+
 
 export const DatagridCell = ({row, column,selectedCell, edit, onEditCell,onSelectCell, onTogleEditCell}:DatagridCellProps ) => {
 

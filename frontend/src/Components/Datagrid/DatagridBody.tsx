@@ -1,14 +1,6 @@
 import React from 'react'
 import { DatagridRow } from './DatagridRow'
-
-type DatagridBodyProps = {
-  rows:any[]
-  columns:any[]
-  onDelete: (rowId:number)=>void
-  onEditCell: (event: React.ChangeEvent<HTMLInputElement>) => void
-}
-
-type SelectedCell = {rowId:number|null,columnId:number|null}
+import {DatagridBodyProps, SelectedCell} from './Datagrid.types'
 
 
 export const DatagridBody = ({ rows, columns, onDelete, onEditCell }:DatagridBodyProps) => {
@@ -36,7 +28,7 @@ export const DatagridBody = ({ rows, columns, onDelete, onEditCell }:DatagridBod
   }
 
   return (
-    <tbody className="datagrid__body">
+    <tbody>
       {/* Loop through rows and render the DatagridRow component */}
       {rows.map(row => (
         <DatagridRow

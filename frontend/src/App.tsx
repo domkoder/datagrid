@@ -1,11 +1,11 @@
 import React from 'react';
-import './App.css'
+import './styles.css'
 import { Datagrid } from './Components';
 import { ReactComponent as Spinner } from './icons/spinner.svg';
 
 // Declear columns and rows variables
-let dataColumns: {}[] = []
-let dataRows: {}[] = []
+let dataColumns: any[] = []
+let dataRows: any[] = []
 
 
 function App() {

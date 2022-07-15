@@ -1,13 +1,13 @@
 import { ReactComponent as Ascending } from '../../icons/ascending.svg';
 import { ReactComponent as Descending } from '../../icons/descending.svg';
+import {DatagridHeaderProps} from './Datagrid.types'
 
 
-
-type DatagridHeaderProps = {
-  columns:any[],
-  sortColumn:{field:string,order:string}
-  onSort: (field:string) => void
-}
+// type DatagridHeaderProps = {
+//   columns:any[],
+//   sortColumn:{field:string,order:string}
+//   onSort: (field:string) => void
+// }
 
 export const DatagridHeader = ({ columns, sortColumn, onSort }:DatagridHeaderProps) => {
 
@@ -19,7 +19,6 @@ export const DatagridHeader = ({ columns, sortColumn, onSort }:DatagridHeaderPro
           return <th
             key={column.id}
             className="datagrid__heading"
-            style={{ width: column.width }}
             onClick={()=>onSort(column.field)}
           >
             <div className='datagrid__heading-text'>

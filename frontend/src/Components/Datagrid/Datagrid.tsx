@@ -3,13 +3,7 @@ import { DatagridHeader } from './DatagridHeader'
 import { DatagridBody } from './DatagridBody'
 import { DatagridPagination } from './DatagridPagination'
 import './styles.css'
-
-
-type DatagridProps = {
-  rows: {}[],
-  columns:{}[],
-  rowsPerPage?:number,
-}
+import {DatagridProps} from './Datagrid.types'
 
 
 const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:DatagridProps) => {

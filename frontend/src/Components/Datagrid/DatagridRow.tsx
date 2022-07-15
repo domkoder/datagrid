@@ -1,18 +1,7 @@
 import { DatagridCell } from './DatagridCell'
+import {DatagridRowProps} from './Datagrid.types'
 
-type DatagridCellProps = {
-  row:any,
-  columns:any[],
-  selectedCell:{
-    rowId: number|null,
-    columnId: number|null,
-  },
-  edit: boolean,
-  onDelete: (rowId:number)=>void,
-  onSelectCell: (rowId:number, columnId:number) => void
-  onTogleEditCell: () => void
-  onEditCell: (event: React.ChangeEvent<HTMLInputElement>) => void
-}
+
 
 export const DatagridRow = ({
   row,
@@ -23,7 +12,7 @@ export const DatagridRow = ({
   onSelectCell,
   onTogleEditCell,
   onEditCell,
-}:DatagridCellProps) => {
+}:DatagridRowProps) => {
   return (
     <tr className="datagrid__row">
       {/* for each row Loop through columns and render the DatagridCell component that belongs to that row and column*/}

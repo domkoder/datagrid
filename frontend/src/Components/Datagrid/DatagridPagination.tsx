@@ -1,16 +1,4 @@
-import React from 'react'
-
-type DatagridPaginationProps = {
-  rowsCount:number,
-  rowsPerPage: number,
-  currentPage: number,
-  maxPageNumberLimit: number,
-  minPageNumberLimit: number,
-  onPageChange:(page:number)=>void,
-  onNextButton:()=>void,
-  onPreviousButton:()=>void,
-  onMovePageTo:(page:number)=>void,
-}
+import {DatagridPaginationProps} from './Datagrid.types'
 
 export const DatagridPagination = ({
   rowsCount,
@@ -56,7 +44,7 @@ export const DatagridPagination = ({
         {pages.map(page => {
           if (page < maxPageNumberLimit + 1 && page > minPageNumberLimit) {
             return (
-              <li key={page} className="pagination__item">
+              <li key={page}>
                 <button
                   onClick={() => onPageChange(page)}
                   className={`pagination__btn ${

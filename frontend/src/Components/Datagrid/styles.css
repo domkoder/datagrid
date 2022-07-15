@@ -10,22 +10,17 @@
 }
 
 .datagrid {
-	/* border: 1px solid rgba(224, 224, 224, 1); */
-	/* width: 400px; */
-	/* position: absolute; */
 	font-family: arial, sans-serif;
 	border-collapse: collapse;
 	border-radius: 5px;
 }
 
 .datagrid__header {
-	/* background-color: rgba(0, 0, 0, 0.08); */
 	background: #d6eefc;
 }
 
 .datagrid__cell,
 .datagrid__heading {
-	/* border: 1px solid #dddddd; */
 	border: 1px solid #bee3f8;
 	text-align: left;
 	height: 40px;
@@ -38,7 +33,6 @@
 	text-transform: uppercase;
 	vertical-align: center;
 	cursor: pointer;
-	/* padding: 10px; */
 }
 
 .datagrid__heading-text {
@@ -51,15 +45,8 @@
 	padding: 15px;
 }
 
-.datagrid__row {
-}
-
 .datagrid__row:hover {
-	/* background-color: rgba(0, 0, 0, 0.04); */
 	background-color: #e7f2f8;
-}
-
-.datagrid__body {
 }
 
 .datagrid__cell {
