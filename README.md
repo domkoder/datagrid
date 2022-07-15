@@ -1,6 +1,6 @@
 # DataGrid
 
-## [Link to deployed version of this comoponent on heroku](https://klas-datagrid.herokuapp.com/).
+### [Link to deployed version of this comoponent on heroku](https://klas-datagrid.herokuapp.com/).
 
 ## Requirements
 
