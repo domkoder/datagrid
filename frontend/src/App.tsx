@@ -12,7 +12,7 @@ function App() {
   // fetch data from backend and asign the result columns and rows variables
   React.useEffect(() => {
     setStatus('loading')
-    fetch('https://klas-datagrid.herokuapp.com/')
+    fetch('https://klas-datagrid.herokuapp.com/api/data')
     .then(response => response.json())
     .then(result => {
       dataColumns = result.dataColumns
@@ -20,6 +20,8 @@ function App() {
       setStatus('success')
     }).catch(error => {
       setError('error please check your network and try again' + error)
+      setStatus('error')
+
     })
   }, [])
 
