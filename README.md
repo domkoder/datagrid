@@ -38,7 +38,7 @@ This project was bootstrapped with
 
 To clone the repo and install all the dependencies in the frontend folder and the root folder the run scripts below
 
-- step 1: `npm clone https://github.com/domkoder/datagrid.git`
+- step 1: `git clone https://github.com/domkoder/datagrid.git`
 
 - step 2: `cd datagrid` enter the root folder
 
