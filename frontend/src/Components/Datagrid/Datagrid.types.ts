@@ -1,10 +1,10 @@
-type Column = {
+export type Column = {
   id: number
   field: string
   headerName: string
 }
 
-type Columns = Column[]
+export type Columns = Column[]
 
 export type SelectedCell = {rowId:number|null,columnId:number|null}
 

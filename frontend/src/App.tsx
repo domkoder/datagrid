@@ -2,11 +2,12 @@ import React from 'react';
 import './styles.css'
 import { Datagrid } from './Components';
 import { ReactComponent as Spinner } from './icons/spinner.svg';
+import {Columns} from './Components/Datagrid/Datagrid.types'
 
 // Declear columns and rows variables
-let dataColumns: any[] = []
+let dataColumns: Columns
 let dataRows: any[] = []
-let rowsPerPage:number = 100;
+let rowsPerPage:number = 100
 
 
 function App() {
