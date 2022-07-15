@@ -19,12 +19,14 @@
 - [ ] Resizable / draggable columns
 - [ ] Tests
 
-<!-- ## Features
+## Features
+
 - Strictly typed with TypeScript
 - column sorting
-- Dynamic  size
+- Dynamic size
 - Cell editing
-- Pagenation -->
+- Pagenation
+- Very Responsive
 
 This project was bootstrapped with
 
