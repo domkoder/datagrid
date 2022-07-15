@@ -2,6 +2,8 @@ import React from 'react'
 import { DatagridHeader } from './DatagridHeader'
 import { DatagridBody } from './DatagridBody'
 import { DatagridPagination } from './DatagridPagination'
+import './styles.css'
+
 
 type DatagridProps = {
   rows: {}[],
@@ -21,6 +23,9 @@ const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:Datagrid
   const [columns, setColumns] = React.useState<any[]>([])
   const [rows, setRows] = React.useState<any[]>([])
 
+  // Sort State
+  const [sortColumn, setSortColumn] = React.useState<{field:string,order:string}>({field:'id', order:'asc'})
+
 
   // pagination states to manage page pagination
   const [currentPage, setCurrentPage] = React.useState<number>(1)
@@ -32,11 +37,27 @@ const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:Datagrid
   // the total count of rows
   const count = rows.length
 
+  const sortedData = React.useCallback(
+    () => {
+      if (!sortColumn.field) return rows;
+
+      const sortedData = rows.sort((a, b) => {
+        return a[sortColumn.field] > b[sortColumn.field] ? 1 : -1;
+      });
+    
+      if (sortColumn.order === 'desc') {
+        return sortedData.reverse();
+      }
+    
+      return sortedData;
+    },[rows, sortColumn.field, sortColumn.order]
+  );
+
 
   // Get paginated current rows
   const indexOfLastRow = currentPage * rowsPerPage
   const indexOfFirstRow = indexOfLastRow - rowsPerPage
-  const paginatedRows = rows.slice(indexOfFirstRow, indexOfLastRow)
+  const paginatedRows = sortedData().slice(indexOfFirstRow, indexOfLastRow)
 
 
   const handlePageChange  = (page:number):void => {
@@ -77,6 +98,19 @@ const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:Datagrid
     setRows(rows.filter(row => row.id !== rowId))
   }
 
+  // sort columns
+  const handleSort = (field: string): void => {
+    const sortColumnCopy = {...sortColumn}
+    if(sortColumnCopy.field === field){
+      sortColumnCopy.order = (sortColumn.order === 'asc')? 'desc': 'asc'
+    }else{
+      sortColumnCopy.field = field; 
+      sortColumnCopy.order = 'asc'; 
+
+    }
+    setSortColumn(sortColumnCopy)
+  }
+
   // edit cell data
   const handeEditCell = (event:React.ChangeEvent<HTMLInputElement>): void => {
     const {value, id, name} = event.target
@@ -93,10 +127,24 @@ const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:Datagrid
     <div className='wrapper'>
       {count !== 0 ? (
         <>
+
           <p>{count} total rows </p>
           <p>Showing {rowsPerPage} rows per page </p>
+
+          <DatagridPagination
+            rowsCount={count}
+            rowsPerPage={rowsPerPage}
+            onPageChange={handlePageChange}
+            currentPage={currentPage}
+            maxPageNumberLimit={maxPageNumberLimit}
+            minPageNumberLimit={minPageNumberLimit}
+            onNextButton={handleNextButton}
+            onPreviousButton={handlePreviousButton}
+            onMovePageTo={handleMovePageTo}
+          />
+
           <table className="datagrid">
-            <DatagridHeader columns={columns} />
+            <DatagridHeader columns={columns} sortColumn={sortColumn} onSort={handleSort} />
             <DatagridBody
               columns={columns}
               rows={paginatedRows}

@@ -1,0 +1,117 @@
+.wrapper {
+	background: #ffffff;
+	box-shadow: 0px 0px 10px rgb(190 190 190 / 18%);
+	border-radius: 5px;
+	overflow-x: auto;
+	overflow-y: hidden;
+	max-width: 100%;
+	margin: auto;
+	padding: 1rem;
+}
+
+.datagrid {
+	/* border: 1px solid rgba(224, 224, 224, 1); */
+	/* width: 400px; */
+	/* position: absolute; */
+	font-family: arial, sans-serif;
+	border-collapse: collapse;
+	border-radius: 5px;
+}
+
+.datagrid__header {
+	/* background-color: rgba(0, 0, 0, 0.08); */
+	background: #d6eefc;
+}
+
+.datagrid__cell,
+.datagrid__heading {
+	/* border: 1px solid #dddddd; */
+	border: 1px solid #bee3f8;
+	text-align: left;
+	height: 40px;
+	margin: 0;
+	position: relative;
+	white-space: nowrap;
+}
+
+.datagrid__heading {
+	text-transform: uppercase;
+	vertical-align: center;
+	cursor: pointer;
+	/* padding: 10px; */
+}
+
+.datagrid__heading-text {
+	display: flex;
+	height: 100%;
+	width: 100%;
+	display: flex;
+	gap: 5px;
+	align-items: center;
+	padding: 15px;
+}
+
+.datagrid__row {
+}
+
+.datagrid__row:hover {
+	/* background-color: rgba(0, 0, 0, 0.04); */
+	background-color: #e7f2f8;
+}
+
+.datagrid__body {
+}
+
+.datagrid__cell {
+	padding: 0;
+}
+
+.datagrid__cell-input {
+	width: 100%;
+	height: 100%;
+	outline: none;
+	border: none;
+	outline: 2px solid #66afe9;
+	font-size: inherit;
+	display: block;
+	padding: 0 10px;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.datagrid__cell-text {
+	padding: 10px;
+}
+
+.datagrid__button--danger {
+	border: none;
+	background: #e53e3e;
+	color: white;
+	cursor: pointer;
+	padding: 5px 10px;
+	border-radius: 5px;
+}
+
+.pagination__list {
+	list-style: none;
+	display: flex;
+	align-items: center;
+	padding: 0px;
+}
+.pagination__more {
+	display: flex;
+	padding: 4px;
+	align-items: center;
+}
+
+.pagination__item {
+}
+
+.pagination__btn {
+	padding: 8px;
+}
+
+.pagination__btn--active {
+	border: 2px solid #66afe9;
+}

@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css'
 import { Datagrid } from './Components';
-import { ReactComponent as Spinner } from './spinner.svg';
+import { ReactComponent as Spinner } from './icons/spinner.svg';
 
 // Declear columns and rows variables
 let dataColumns: {}[] = []
