@@ -38,19 +38,19 @@ This project was bootstrapped with
 
 To clone the repo and install all the dependencies in the frontend folder and the root folder the run scripts below
 
-### step 1: `npm https://github.com/domkoder/datagrid.git`
+- step 1: `npm https://github.com/domkoder/datagrid.git`
 
-### step 2: `cd datagrid`
+- step 2: `cd datagrid` enter the root folder
 
-### step 3: `npm install`
+- step 3: `npm install` install all the dependencies in the project root folder
 
-### step 4: `cd frontend`
+- step 4: `cd frontend` enter the frontend folder
 
-### step 5: `npm install`
+- step 5: `npm install` install all the dependencies in the project frontend folder
 
-### step 6: `cd ..`
+- step 6: `cd ..` go back to the root folder
 
-### step 7: `npm run dev`
+- step 5: `npm run dev` run the app
 
 The above scrits Runs the both the frontend and backend app concurrently in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view the frontend app in the browser.\
