@@ -9,7 +9,7 @@ let dataColumns: Columns
 let dataRows: any[] = []
 let rowsPerPage:number = 100
 
-
+// 
 function App() {
   // fetch data from backend and asign the result columns and rows variables
   React.useEffect(() => {
