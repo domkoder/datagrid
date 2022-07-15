@@ -36,14 +36,10 @@ This project was bootstrapped with
 
 # Getting Started with this project
 
-In the project directory, you can run:
-
-## Available Scripts
-
-In the project directory, you can run:
+Clone the repo and install all the dependencies in the frontend folder and the root folder the run script below
 
 ### `npm run dev`
 
-Runs the both the frontend and backend app concurrently in the development mode.\
+The above scrit Runs the both the frontend and backend app concurrently in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view the frontend app in the browser.\
 Open [http://localhost:5000](http://localhost:3000) to view the backend app in the browser.
