@@ -11,7 +11,7 @@ export type SelectedCell = {rowId:number|null,columnId:number|null}
 export type DatagridProps = {
   rows: any[]
   columns: Columns
-  rowsPerPage?:number
+  rowsPerPage:number
 }
 
 export type DatagridHeaderProps = {

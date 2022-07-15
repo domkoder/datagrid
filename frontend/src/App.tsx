@@ -6,6 +6,7 @@ import { ReactComponent as Spinner } from './icons/spinner.svg';
 // Declear columns and rows variables
 let dataColumns: any[] = []
 let dataRows: any[] = []
+let rowsPerPage:number = 100;
 
 
 function App() {
@@ -41,7 +42,7 @@ function App() {
       {/* render base on the status state  */}
       { isSuccess?(
         <div  className={'container'}>
-          <Datagrid rows={dataRows} columns={dataColumns} rowsPerPage={1000}  />
+          <Datagrid rows={dataRows} columns={dataColumns} rowsPerPage={rowsPerPage}  />
         </div>
       ):isLoading || isIdle ?(
         <div className="spinner"><Spinner className='spinner__icon'/></div>

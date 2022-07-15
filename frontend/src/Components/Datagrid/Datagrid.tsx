@@ -6,7 +6,7 @@ import './styles.css'
 import {DatagridProps} from './Datagrid.types'
 
 
-const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:DatagridProps) => {
+const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage}:DatagridProps) => {
   // Get columns and rows then set it as localstate
   React.useEffect(() => {
     setColumns(dataColumns)
@@ -124,6 +124,7 @@ const Datagrid = ({ rows:dataRows, columns:dataColumns,rowsPerPage=100}:Datagrid
 
           <p>{count} total rows </p>
           <p>Showing {rowsPerPage} rows per page </p>
+          <small>Double click a cell to edit it</small>
 
           <DatagridPagination
             rowsCount={count}
