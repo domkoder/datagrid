@@ -5,11 +5,10 @@
   "main": "server.js",
   "scripts": {
     "start": "node ./backend/dist/server.js",
-    "build": "tsc -p ./backend",
     "server": "nodemon ./backend/server.ts",
     "client": "npm start --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix client && npm run build --prefix client"
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false tsc -p ./backend && npm install --prefix client && npm run build --prefix client"
   },
   "author": "Nandom Alfred",
   "license": "MIT",
