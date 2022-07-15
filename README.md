@@ -50,7 +50,7 @@ To clone the repo and install all the dependencies in the frontend folder and th
 
 - step 6: `cd ..` go back to the root folder
 
-- step 5: `npm run dev` run the app
+- step 7: `npm run dev` run the app
 
 The above scrits Runs the both the frontend and backend app concurrently in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view the frontend app in the browser.\
